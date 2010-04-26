@@ -2,7 +2,7 @@
 class TwitterOauth
   def initialize
     # カレントディレクトリのsercret_keys.ymlをloadします。
-    @secret_keys = YAML.load_file(File.dirname(__FILE__) + '/secret_key.yml')
+    @secret_keys = YAML.load_file(File.dirname(__FILE__) + '/secret_keys.yml')
   end
   
   def consumer_key
