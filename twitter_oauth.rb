@@ -3,6 +3,8 @@ class TwitterOauth
   def initialize
     # カレントディレクトリのsercret_keys.ymlをloadします。
     @secret_keys = YAML.load_file(File.dirname(__FILE__) + '/secret_keys.yml')
+    @consumer = ''
+    @res = ''
   end
   
   def consumer_key
@@ -39,14 +41,14 @@ class TwitterOauth
   end
 
   def post(tweet=nil)
-    @response = access_token.post(
+    @res = access_token.post(
       'http://twitter.com/statuses/update.json',
       'status'=> tweet
     )
   end
 
   def response_success?
-    return true if @response.class == Net::HTTPOK
+    return true if @res.class == Net::HTTPOK
 
     false
   end
