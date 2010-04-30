@@ -39,9 +39,15 @@ class TwitterOauth
   end
 
   def post(tweet=nil)
-    response = access_token.post(
+    @response = access_token.post(
       'http://twitter.com/statuses/update.json',
       'status'=> tweet
     )
+  end
+
+  def response_success?
+    return true if @response.class == Net::HTTPOK
+
+    false
   end
 end
