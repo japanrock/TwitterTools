@@ -1,0 +1,23 @@
+<!--
+see http://blogs.itmedia.co.jp/naoto/2010/04/twitteranywhere.html
+-->
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Twitter AnyWhere Test</title>
+    <script src="http://platform.twitter.com/anywhere.js?id=f2ZOqY6P2B05v9U7nYexQ&amp;v=1"></script>
+  </head>
+  <body>
+    <div id="placeholder"></div>
+
+    <script type="text/javascript">
+      twttr.anywhere("1", function (twitter) {
+        twitter("#placeholder").tweetBox({
+          label: "Tweet Test",
+          defaultContent: "Test Twitter AnyWhere"
+        });
+      });
+    </script>
+  </body>
+</html>
