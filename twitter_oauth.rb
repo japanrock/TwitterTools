@@ -47,6 +47,16 @@ class TwitterOauth
     )
   end
 
+  def get_timeline
+    @res = access_token.get('http://twitter.com/statuses/friends_timeline.json')
+    @res.body
+  end
+
+  def get_mentions
+    @res = access_token.get('http://twitter.com/statuses/mentions.atom')
+    @res.body
+  end
+
   def response_success?
     return true if @res.class == Net::HTTPOK
 
