@@ -1,3 +1,8 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+require 'oauth'
+
 # TwitterのAPIとのやりとりを行うクラス
 class TwitterOauth
   def initialize
@@ -40,6 +45,8 @@ class TwitterOauth
     )
   end
 
+  # See Twitter API Documentation http://apiwiki.twitter.com/Twitter-API-Documentation
+
   def post(tweet=nil)
     @res = access_token.post(
       'http://twitter.com/statuses/update.json',
@@ -48,12 +55,17 @@ class TwitterOauth
   end
 
   def get_timeline
-    @res = access_token.get('http://twitter.com/statuses/friends_timeline.json')
+    @res = access_token.get('http://twitter.com/statuses/friends_timeline.atom')
     @res.body
   end
 
   def get_mentions
-    @res = access_token.get('http://twitter.com/statuses/mentions.atom')
+    @res = access_token.get('http://api.twitter.com/1/statuses/mentions.xml')
+    @res.body
+  end
+
+  def get_rate_limit_status
+    @res = access_token.get('http://api.twitter.com/1/account/rate_limit_status.xml')
     @res.body
   end
 
