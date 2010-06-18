@@ -45,6 +45,10 @@ class TwitterOauth
     )
   end
 
+  def countermeasure_duplicate
+    Time.now.strftime("%Y%m%d%H%M%S")
+  end
+
   # See Twitter API Documentation http://apiwiki.twitter.com/Twitter-API-Documentation
 
   def post(tweet=nil)
